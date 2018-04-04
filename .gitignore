@@ -1,5 +1,5 @@
 .idea/
-.build
+build/
 out/
 *.iml
 *.class
@@ -8,3 +8,4 @@ target/
 
 logs/
 *.log
+.gradle/
