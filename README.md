@@ -1,4 +1,4 @@
-This is bittrix-markets-aggregator-tz project. 
+This is bittrex-markets-aggregator-tz project. 
 
 Sincerely, 
 Captain obvious
