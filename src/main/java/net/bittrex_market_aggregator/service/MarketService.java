@@ -1,4 +1,15 @@
 package net.bittrex_market_aggregator.service;
 
-public class MarketService {
+import net.bittrex_market_aggregator.exception.MarketNotFoundException;
+import net.bittrex_market_aggregator.model.Market;
+
+public interface MarketService {
+
+
+    void updateMarkets();
+
+    Market getMarketInfoByName(String marketName)throws MarketNotFoundException;
+
+    double getLastChangesLastHourByMarketName(String marketName) throws MarketNotFoundException;
+
 }

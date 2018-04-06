@@ -1,6 +1,7 @@
 package net.bittrex_market_aggregator.model;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
