@@ -26,6 +26,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -60,6 +61,7 @@ public class MarketControllerTest {
 
     @Test
     public void getMarketInfoTest() throws Exception {
+        doNothing().when(service).updateMarkets();
         when(service.getMarketInfoByName("BTC-2GIVE")).thenReturn(markets.get(0));
         String json = objectMapper.writeValueAsString(markets.get(0));
 
@@ -76,6 +78,7 @@ public class MarketControllerTest {
 
     @Test
     public void getLastLowChanges() throws Exception {
+        doNothing().when(service).updateMarkets();
         when(service.getLastChangesLastHourByMarketName("BTC-2GIVE")).thenReturn(0.00000071 - 0.00000069);
 
         ResponseEntity entity = controller.getLastLowChanges("BTC-2GIVE");

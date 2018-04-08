@@ -10,10 +10,7 @@ public class Run {
     private static final Logger LOGGER = Logger.getLogger(Run.class.getName());
 
     public static void main(String[] args) {
-        LOGGER.info("HELLO");
-        LOGGER.error("HELLO");
-        LOGGER.warn("HELLO");
-
+        LOGGER.info("Start server..");
         SpringApplication.run(Run.class, args);
     }
 }

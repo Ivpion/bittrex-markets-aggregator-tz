@@ -3,7 +3,9 @@ package net.bittrex_market_aggregator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 public class Market {
 
@@ -21,7 +23,7 @@ public class Market {
     private double baseVolume;
 
     @JsonProperty(value = "TimeStamp")
-    private Date timestamp;
+    private String timestamp;
     @JsonProperty(value = "Bid")
     private double bid;
     @JsonProperty(value = "Ask")
@@ -33,7 +35,7 @@ public class Market {
     @JsonProperty(value = "PrevDay")
     private double prevDay;
     @JsonProperty(value = "Created")
-    private Date created;
+    private String created;
     @JsonProperty(value = "DisplayMarketName")
     private String displayMarketName;
 
@@ -156,19 +158,26 @@ public class Market {
         this.prevDay = prevDay;
     }
 
-    public Date getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(String created) {
         this.created = created;
     }
+
+    private String dateToDateTime(LocalDateTime date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.ms");
+        return dateFormat.format(date);
+    }
+
+
 }

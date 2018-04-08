@@ -1,0 +1,40 @@
+package net.bittrex_market_aggregator.config;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+@Component
+public class MyDataSource {
+
+    private static final Logger LOGGER = Logger.getLogger(MyDataSource.class);
+
+    @Value("${dataSource.password}")
+    private String pass;
+    @Value("${dataSource.username}")
+    private String user;
+    @Value("${dataSource.url}")
+    private String url;
+
+    public Connection getConnection() throws SQLException {
+        LOGGER.info("Get connection...");
+
+        return DriverManager.getConnection(url, user, pass);
+    }
+
+    public void closeConnection(Connection connection){
+        if (connection == null) return;
+        try {
+            LOGGER.info("Close connection...");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+}

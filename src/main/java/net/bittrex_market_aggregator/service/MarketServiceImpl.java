@@ -3,32 +3,44 @@ package net.bittrex_market_aggregator.service;
 import net.bittrex_market_aggregator.dao.MarketDao;
 import net.bittrex_market_aggregator.exception.MarketNotFoundException;
 import net.bittrex_market_aggregator.model.Market;
+import net.bittrex_market_aggregator.parser.BittrexParser;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
 
 
 @Service
 public class MarketServiceImpl implements MarketService{
 
     private final static Logger LOGGER = Logger.getLogger(MarketServiceImpl.class);
-
+    @Value("${fetch.url}")
+    private  String URL;
     private final MarketDao dao;
+    private final BittrexParser parser;
 
     @Autowired
-    public MarketServiceImpl(MarketDao dao) {
+    public MarketServiceImpl(MarketDao dao, BittrexParser parser) {
+        this.parser = parser;
         this.dao = dao;
     }
 
 
     @Override
-    public void updateMarkets() {
-
+    public void updateMarkets() throws IOException, SQLException, ClassNotFoundException {
+        LOGGER.info("Start updates markets");
+        dao.saveAndUpdateAllMarkets(parser.readJsonFromUrl(new URL(URL)));
     }
 
     @Override
-    public Market getMarketInfoByName(String marketName)  throws MarketNotFoundException{
-        return null;
+    public Market getMarketInfoByName(String marketName) throws MarketNotFoundException, SQLException {
+        LOGGER.info("Searching market with name: -" + marketName);
+        return dao.findMarketByName(marketName);
+
     }
 
     @Override
