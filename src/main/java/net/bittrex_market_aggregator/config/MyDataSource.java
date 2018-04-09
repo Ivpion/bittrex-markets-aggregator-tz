@@ -13,16 +13,15 @@ public class MyDataSource {
 
     private static final Logger LOGGER = Logger.getLogger(MyDataSource.class);
 
-    @Value("${dataSource.password}")
+    @Value("${spring.datasource.password}")
     private String pass;
-    @Value("${dataSource.username}")
+    @Value("${spring.datasource.username}")
     private String user;
-    @Value("${dataSource.url}")
+    @Value("${spring.datasource.url}")
     private String url;
 
     public Connection getConnection() throws SQLException {
         LOGGER.info("Get connection...");
-
         Connection connect = DriverManager.getConnection(url, user, pass);
         connect.createStatement().execute("SET time_zone='+00:00'");
         return connect;
