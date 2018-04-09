@@ -14,6 +14,6 @@ public interface MarketService {
 
     Market getMarketInfoByName(String marketName) throws MarketNotFoundException, SQLException;
 
-    double getLastChangesLastHourByMarketName(String marketName) throws MarketNotFoundException;
+    double getLastChangesLastHourByMarketName(String marketName) throws MarketNotFoundException, SQLException;
 
 }

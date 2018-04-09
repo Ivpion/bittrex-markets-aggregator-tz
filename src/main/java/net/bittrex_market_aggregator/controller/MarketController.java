@@ -82,6 +82,10 @@ public class MarketController {
         } catch (MarketNotFoundException e) {
             LOGGER.error("there is no market with this name: " + marketName);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            LOGGER.error(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         LOGGER.info("Response is successful");
         return new ResponseEntity<>(BigDecimal.valueOf(lastChanges).setScale(9, RoundingMode.HALF_UP).doubleValue(), HttpStatus.OK);

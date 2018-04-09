@@ -23,7 +23,9 @@ public class MyDataSource {
     public Connection getConnection() throws SQLException {
         LOGGER.info("Get connection...");
 
-        return DriverManager.getConnection(url, user, pass);
+        Connection connect = DriverManager.getConnection(url, user, pass);
+        connect.createStatement().execute("SET time_zone='+00:00'");
+        return connect;
     }
 
     public void closeConnection(Connection connection){

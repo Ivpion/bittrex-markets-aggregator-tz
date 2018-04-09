@@ -39,12 +39,19 @@ public class MarketServiceImpl implements MarketService{
     @Override
     public Market getMarketInfoByName(String marketName) throws MarketNotFoundException, SQLException {
         LOGGER.info("Searching market with name: -" + marketName);
+        if (!dao.checkMarketName(marketName)){
+            throw new MarketNotFoundException();
+        }
         return dao.findMarketByName(marketName);
 
     }
 
     @Override
-    public double getLastChangesLastHourByMarketName(String marketName) throws MarketNotFoundException {
-        return 0;
+    public double getLastChangesLastHourByMarketName(String marketName) throws MarketNotFoundException, SQLException {
+        LOGGER.info("Start search last changes for market: " + marketName);
+        if (!dao.checkMarketName(marketName)){
+            throw new MarketNotFoundException();
+        }
+        return dao.getLastChangesNyMarketName(marketName);
     }
 }

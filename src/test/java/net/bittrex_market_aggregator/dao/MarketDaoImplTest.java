@@ -28,4 +28,12 @@ public class MarketDaoImplTest {
         System.out.println(market);
         Assert.assertTrue(market.getAsk() != 0);
     }
+
+    @Ignore
+    @Test
+    public void test2() throws SQLException {
+        dao.checkMarketName("BTC-2GIVE");
+        dao.getLastChangesNyMarketName("BTC-2GIVE");
+
+    }
 }
