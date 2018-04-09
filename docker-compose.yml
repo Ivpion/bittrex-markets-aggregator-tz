@@ -13,6 +13,7 @@ services:
        MYSQL_DATABASE: database-for-bittrex
        MYSQL_USER: bittrex-market-user
        MYSQL_PASSWORD: bittrex-market-pass
+       MYSQL_ROOT_HOST: 0.0.0.0
   springapp:
      ports:
        - "8080:8080"

@@ -1,10 +1,12 @@
 FROM java:8-jdk
 
-RUN mkdir /app2
-WORKDIR /app2
+RUN mkdir ~/app
+WORKDIR ~/app
 
-COPY . /app2
+COPY . ~/app
 
+WORKDIR ~/app
 RUN ./gradlew assemble
 
-ENTRYPOINT ["java", "-jar", "/app2/build/libs/bittrex-market-aggregator-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "./build/libs/bittrex-market-aggregator-1.0.jar"]
+

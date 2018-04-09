@@ -8,3 +8,4 @@ target/
 *.properties
 logs/
 *.log
+.gradle/

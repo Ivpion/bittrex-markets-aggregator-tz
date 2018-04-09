@@ -5,7 +5,6 @@ import net.bittrex_market_aggregator.config.MyDataSource;
 import net.bittrex_market_aggregator.model.Market;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -21,11 +20,7 @@ public class MarketDaoImpl implements MarketDao {
     private final Connection connection;
 
     @Autowired
-    private JdbcTemplate template;
-
-
-    @Autowired
-    public MarketDaoImpl(MyDataSource source, JdbcTemplate template) throws SQLException {
+    public MarketDaoImpl(MyDataSource source) throws SQLException {
         this.dataSource = source;
         connection = dataSource.getConnection();
     }
