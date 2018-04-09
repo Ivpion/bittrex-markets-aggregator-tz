@@ -20,6 +20,9 @@ public class MarketDaoImpl implements MarketDao {
 
     private final Connection connection;
 
+    @Autowired
+    private JdbcTemplate template;
+
 
     @Autowired
     public MarketDaoImpl(MyDataSource source, JdbcTemplate template) throws SQLException {
