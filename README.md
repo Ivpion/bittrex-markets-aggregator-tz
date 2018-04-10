@@ -1,22 +1,24 @@
-This is bittrex-markets-aggregator-tz project. 
+## This is bittrex-markets-aggregator-tz project. 
 
 Sincerely, 
 Captain obvious
 
-###Get info by market name
+### Get info by market name
 
 http://localhost:8080/get-market-info?name=BTC-2GIVE
+
 return Market as JSON
 
-###Get last changes by hour by name
+### Get last changes by hour by name
 
 http://localhost:8080/get-last-changes?name=BTC-2GIVE
+
 return double 
 
-###For install docker-compose:
+### For install docker-compose:
  https://docs.docker.com/compose/install/#master-builds
 
-###For start app use next command:
+### For start app use next command:
 (Before start make sure, that docker-compose install on your machine)
 
 Download project
