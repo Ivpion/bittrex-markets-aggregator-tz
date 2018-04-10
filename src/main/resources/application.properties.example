@@ -1,5 +1,5 @@
 dataSource.driverClassName=com.mysql.cj.jdbc.Driver
-dataSource.url=jdbc:mysql://localhost:3306/database-for-bittrex?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+dataSource.url=jdbc:mysql://localhost:3308/database-for-bittrex?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
 dataSource.username=<user>
 dataSource.password=<password>
 fetchperiod.milis=5000
