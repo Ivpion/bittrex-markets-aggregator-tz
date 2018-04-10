@@ -1,0 +1,14 @@
+?verifyServerCertificate=false&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/database-for-bittrex
+
+spring.datasource.username=bittrex-market-user
+spring.datasource.password=bittrex-market-pass
+spring.jpa.hibernate.ddl-auto=create-drop
+fetchperiod.milis=5000
+fetch.url=https://bittrex.com/api/v1.1/public/getmarketsummaries
+
+
+docker run --name bittrex-app -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=database-for-bittrex -e MYSQL_USER=bittrex-user -e MYSQL_ROOT_HOST=bittrex-app -e  MYSQL_PASSWORD=bittrex-market-pass -d mysql:5.7 -

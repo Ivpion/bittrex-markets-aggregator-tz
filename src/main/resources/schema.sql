@@ -18,7 +18,7 @@
 --
 -- Table structure for table `last_values`
 --
--- DROP TABLE IF EXISTS `last_values`;
+DROP TABLE IF EXISTS `last_values`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `last_values` (
@@ -34,7 +34,7 @@ CREATE TABLE `last_values` (
 -- Table structure for table `markets`
 --
 
--- DROP TABLE IF EXISTS `markets`;
+DROP TABLE IF EXISTS `markets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `markets` (

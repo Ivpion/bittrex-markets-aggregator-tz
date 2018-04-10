@@ -20,7 +20,7 @@ public class MarketDaoImpl implements MarketDao {
     private final Connection connection;
 
     @Autowired
-    public MarketDaoImpl(MyDataSource source) throws SQLException {
+    public MarketDaoImpl(MyDataSource source) throws SQLException, ClassNotFoundException {
         this.dataSource = source;
         connection = dataSource.getConnection();
     }

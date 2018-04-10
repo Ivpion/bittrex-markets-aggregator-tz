@@ -19,8 +19,9 @@ public class MyDataSource {
     private String user;
     @Value("${spring.datasource.url}")
     private String url;
-
-    public Connection getConnection() throws SQLException {
+    @Value("${spring.datasource.driverClassName}")
+    private String driver;
+    public Connection getConnection() throws SQLException{
         LOGGER.info("Get connection...");
         Connection connect = DriverManager.getConnection(url, user, pass);
         connect.createStatement().execute("SET time_zone='+00:00'");

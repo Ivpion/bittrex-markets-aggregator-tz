@@ -3,7 +3,6 @@ build/
 out/
 *.iml
 *.class
-*.jar
 target/
 *.properties
 logs/

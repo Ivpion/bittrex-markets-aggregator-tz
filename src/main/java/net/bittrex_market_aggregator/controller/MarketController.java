@@ -32,12 +32,19 @@ public class MarketController {
     @Autowired
     public MarketController(MarketService service) {
         this.service = service;
-        startUpdateMarketsData();
+       // startUpdateMarketsData();
     }
 
-    private void startUpdateMarketsData(){
+
+
+    public void startUpdateMarketsData(){
         LOGGER.info("Start demon...");
         Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                LOGGER.error(e.getMessage());
+            }
             while (true){
                 try {
                     service.updateMarkets();
