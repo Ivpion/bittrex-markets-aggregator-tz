@@ -19,8 +19,7 @@ public class MyDataSource {
     private String user;
     @Value("${spring.datasource.url}")
     private String url;
-    @Value("${spring.datasource.driverClassName}")
-    private String driver;
+
     public Connection getConnection() throws SQLException{
         LOGGER.info("Get connection...");
         Connection connect = DriverManager.getConnection(url, user, pass);

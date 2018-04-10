@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
-import java.util.concurrent.CompletableFuture;
 
 @RestController
 public class MarketController {
@@ -32,36 +30,8 @@ public class MarketController {
     @Autowired
     public MarketController(MarketService service) {
         this.service = service;
-       // startUpdateMarketsData();
     }
 
-
-
-    public void startUpdateMarketsData(){
-        LOGGER.info("Start demon...");
-        Thread thread = new Thread(() -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                LOGGER.error(e.getMessage());
-            }
-            while (true){
-                try {
-                    service.updateMarkets();
-                } catch (IOException | SQLException | ClassNotFoundException e) {
-                    e.printStackTrace();
-                    LOGGER.error(e.getMessage());
-                }
-                try {
-                    Thread.sleep(sleepTime);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    LOGGER.error(e.getMessage());
-                }
-            }
-        });
-        CompletableFuture.runAsync(thread);
-    }
 
     @RequestMapping(path = "/get-market-info", method = RequestMethod.GET)
     public ResponseEntity<Object> getMarketInfo(@RequestParam("name") String marketName) {
